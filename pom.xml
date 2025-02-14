@@ -5,7 +5,7 @@
 	<groupId>com.mt</groupId>
 	<artifactId>maven-web-application</artifactId>
 	<packaging>war</packaging>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.0.3</version>
 	
 	<name>maven-web-application</name>
 
@@ -13,7 +13,7 @@
 
 	<organization>
 		<name>Mithun Technologies</name>
-		<url>http://example-url.com/</url>
+		<url>http://mithuntechnologies.com/</url>
 	</organization>
 
 	<properties>
@@ -21,13 +21,31 @@
 		<spring.version>5.1.2.RELEASE</spring.version>
 		<junit.version>4.11</junit.version>
 		<log4j.version>1.2.17</log4j.version>
-		<sonar.host.url>http://18.138.81.149:9000/</sonar.host.url>
-		<sonar.login>admin</sonar.login>
-		<sonar.password>passw0rd</sonar.password> 
+		<sonar.host.url>http://192.168.1.50:9000/</sonar.host.url>
+		<sonar.token>sqa_b583d073a02db9d21f9dd47081819cf72b8e45a5</sonar.token> 
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 
 	</properties>
+
+  <repositories>
+	<repository>
+		<id>remote-nexus</id>
+		<name>MEDPLUS remote repository </name>
+		<url>http://192.168.1.50:8091/repository/mixed-remote-repo/</url>
+	</repository>
+	<repository>
+		<id>proxy-nexus</id>
+		<name>MEDPLUS Proxy Repository</name>
+		<url>http://192.168.1.50:8091/repository/mixed-proxy-repo/</url>
+	</repository>
+	<repository>
+		<id>group-nexus</id>
+		<name>MEDPLUS Group Repository</name>
+		<url>http://192.168.1.50:8091/repository/mixed-group-repo/</url>
+	</repository>
+
+  </repositories>	
 
 	<dependencies>
 		
@@ -90,6 +108,12 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+
+		<dependency>
+  			<groupId>com.mt</groupId>
+  			<artifactId>testing</artifactId>
+  			<version>0.0.1-20250213.133953-1</version>
+		</dependency>
 		
 	</dependencies>
 	
@@ -97,14 +121,14 @@
 	
 	    <repository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Releases Nexus Repository</name>
-	      <url>http://13.212.71.229:9980/mithuntechnologies/repository/canarabank-snapshot/</url>
+	      <name>Testing Releases Nexus Repository</name>
+	      <url>http://192.168.1.50:8091/repository/maven-test-releases/</url>
 	    </repository>
 	    
 	    <snapshotRepository>
 	      <id>nexus</id>
-	      <name>Mithun Technologies Snapshot Nexus Repository </name>
-	      <url>http://13.212.71.229:9980/mithuntechnologies/repository/canarabank-release/</url>
+	      <name>Testing SNAPSHOTS Nexus Repository</name>
+	      <url>http://192.168.1.50:8091/repository/maven-test-snapshots/</url>
 	    </snapshotRepository>
 	    
 	</distributionManagement>
